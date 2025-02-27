@@ -13,7 +13,7 @@
 # Duplicating a model and renaming it
 
 ## Duping a model
-The transmitters can connect to multiple radio receivers but not at the same time.
+The transmitters can connect to multiple radio receivers, but not at the same time.
 Thus, each paired radio receiver has a model associated with it.
 For our porpose, we need to clone any exsisting `Rover` model and then 
 rename it to our liking *e.g. sam's-rover*.
@@ -23,10 +23,16 @@ rename it to our liking *e.g. sam's-rover*.
 
 1. Turn the transmitter on by holding the power button in the middle. It'll show a bunch of warnings. Ignore them by either pressing the return (RTN, to left to the screen) or the cylindrical button next to the screen.
 2. Once you're on the screen, you'll see the model name (in the image below, it's CRF)
-<img width="565" alt="Screenshot 2025-02-27 at 10 28 23 AM" src="https://github.com/user-attachments/assets/3f9ae4f8-4379-4444-a4ab-21514ce7f097" />
+<img width="565" alt="" src="https://github.com/user-attachments/assets/3f9ae4f8-4379-4444-a4ab-21514ce7f097" />
+
 3. Press the cylindrical button, and you'll go into the model select menu
+<img width="563" alt="Screenshot 2025-02-27 at 10 44 52 AM" src="https://github.com/user-attachments/assets/e0136a13-0293-4b7e-81f5-cb55de74f02b" />
+
 4. Rotate the cylindrical button till a model that goes by `rover[*]` is highlighted.
 5. Press the cylindrical button again, and you'll see an option to duplicate the model.
+<img width="525" alt="Dup model" src="https://github.com/user-attachments/assets/8e10b2ae-090a-436d-b0c7-4d27ac07c053" />
+
+
 6. Duplicate that model by pressing the cylindrical button again.
 7. The clone will show up at the end of the model list.
 8. Go to the clone and select it.
