@@ -48,14 +48,21 @@ Now we'll look into renaming the model
 # Pairing your model with the receiver
 
 ## Turning on the pairing mode in the receiver
-You'll need to pair the model to the receiver. To put the receiver in pairing mode, do the following:
+You'll need to pair the model to the receiver. The receiver draws power from the motor ESC, so make sure it's plugged in and the battery is plugged in.
+
+
+>[!CAUTION]
+> When connecting ESC or Radio receiver pins to the navio, make sure that the black wire always faces down
+> and the yellow or white wire always faces up.
+
+To put the receiver in pairing mode, do the following:
 
 15. Plug the battery in the rover
 16. Connect the ESC pins of the servo and the motor to the navio.
 17. Unplug the radio receiver if it's plugged into the navio.
 18. Press and hold the only button on the receiver module
-19. Now, plug it back in (the way it was, yellow wire of the receiver should face up)
-20. The receiver will flash; if not, either you didn't press it, or there's no power
+19. Now, plug it back in (the way it was, the yellow wire of the receiver should face up)
+20. The receiver will flash; if not, either you didn't press it or there's no power
   - Check if the ESC is on; if not, turn it on
   - If the ESC is not turning on, check the battery connection or ask TA for help
  
