@@ -40,6 +40,7 @@ Now we'll look into renaming the model
 11. After selecting the model, press the silver MDL button on the top right of the screen.
 12. It'll open a window to edit the model name like below
   <img width="540" alt="Model Setup" src="https://github.com/user-attachments/assets/d98e750e-d22e-4a6b-b9cc-b7a01290002b" />
+
 13. Press the cylindrical button and moving it will change the character.
 14. After naming it, just go back with the RTN button.
 
@@ -49,28 +50,28 @@ Now we'll look into renaming the model
 ## Turning on the pairing mode in the receiver
 You'll need to pair the model to the receiver. To put the receiver in pairing mode, do the following:
 
-- Plug the battery in the rover
-- Connect the ESC pins of the servo and the motor to the navio.
-- Unplug the radio receiver if it's plugged into the navio.
-- Press and hold the only button on the receiver module
-- Now, plug it back in (the way it was, yellow wire of the receiver should face up)
-- The receiver will flash; if not, either you didn't press it, or there's no power
+15. Plug the battery in the rover
+16. Connect the ESC pins of the servo and the motor to the navio.
+17. Unplug the radio receiver if it's plugged into the navio.
+18. Press and hold the only button on the receiver module
+19. Now, plug it back in (the way it was, yellow wire of the receiver should face up)
+20. The receiver will flash; if not, either you didn't press it, or there's no power
   - Check if the ESC is on; if not, turn it on
   - If the ESC is not turning on, check the battery connection or ask TA for help
  
 ## Binding the transmitter
 
-- The Receiver should be in binding mode
-- Go to the model and model setup menu like you did before
-- Go all the way down until (on the model setup menu) you see a bind option
+21. The Receiver should be in binding mode
+22. Go to the model and model setup menu like you did before
+23. Go all the way down until (on the model setup menu) you see a bind option
   - The bind option should be all within the Internal RF section
-- Press the cylinder on it
-- It should ask to select the channels; just select the first one
-- Now it'll say binding; wait for the receiver to flash rapidly
-- When it flashes rapidly, plug it out and back in again
-- Now you're paired with the radio.
-- Press RTN to go back to the main screen
-- You'll see an antenna symbol with a bunch of bars on the top right.
+24. Press the cylinder on it
+25. It should ask to select the channels; just select the first one
+26. Now it'll say binding; wait for the receiver to flash rapidly
+27 When it flashes rapidly, plug it out and back in again
+28. Now you're paired with the radio.
+29. Press RTN to go back to the main screen
+30. You'll see an antenna symbol with a bunch of bars on the top right.
 
 
 
