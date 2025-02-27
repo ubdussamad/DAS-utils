@@ -87,6 +87,8 @@ To put the receiver in pairing mode, do the following:
 28. Now you're paired with the radio.
 29. Press RTN to go back to the main screen
 30. You'll see an antenna symbol with a bunch of bars on the top right.
+<img width="137" alt="Antenna with bars" src="https://github.com/user-attachments/assets/e284d4dd-5125-483d-9a82-cd4ed2b45c5a" />
+31. If none of the bars are white like shown above, talk to the TA.
 
 
 
