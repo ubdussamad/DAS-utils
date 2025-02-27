@@ -69,7 +69,7 @@ To put the receiver in pairing mode, do the following:
 18. Press and hold the only button on the receiver module
 19. Now, plug it back in (the way it was, the yellow wire of the receiver should face up)
 20. The receiver will flash; if not, either you didn't press it or there's no power
-  - Check if the ESC is on; if not, turn it on
+  - Check if the ESC is on; if not, turn it on by pressing the power button once for a sec
   - If the ESC is not turning on, check the battery connection or ask TA for help
  
 ## Binding the transmitter
