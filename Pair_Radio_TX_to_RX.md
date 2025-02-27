@@ -1,0 +1,79 @@
+# Pairing Radiomaster TX-16s Controller to RadioMaster-R81 8CH Mini Reciever
+
+# Rquirements
+- Access to the receiver module; it typically sits under the Pi mount.
+
+<img width="292" alt="Radio Reciever MOdule" src="https://github.com/user-attachments/assets/746adfcb-8734-4bef-83cb-a328220c225f" />
+ 
+- TX-16s radio controller
+
+<img width="465" alt="TX-16s transmitter" src="https://github.com/user-attachments/assets/660b5be1-4e03-4402-b4e4-7e0eb6ecd0f6" />
+
+
+# Duplicating a model and renaming it
+
+## Duping a model
+The transmitters can connect to multiple radio receivers but not at the same time.
+Thus, each paired radio receiver has a model associated with it.
+For our porpose, we need to clone any exsisting `Rover` model and then 
+rename it to our liking *e.g. sam's-rover*.
+
+> [!TIP]
+> To go back from any menu, use the RTN button
+
+1. Turn the transmitter on by holding the power button in the middle. It'll show a bunch of warnings. Ignore them by either pressing the return (RTN, to left to the screen) or the cylindrical button next to the screen.
+2. Once you're on the screen, you'll see the model name (in the image below, it's CRF)
+<img width="565" alt="Screenshot 2025-02-27 at 10 28 23 AM" src="https://github.com/user-attachments/assets/3f9ae4f8-4379-4444-a4ab-21514ce7f097" />
+3. Press the cylindrical button, and you'll go into the model select menu
+4. Rotate the cylindrical button till a model that goes by `rover[*]` is highlighted.
+5. Press the cylindrical button again, and you'll see an option to duplicate the model.
+6. Duplicate that model by pressing the cylindrical button again.
+7. The clone will show up at the end of the model list.
+8. Go to the clone and select it.
+9. Now, you'll see the selected model's name like you saw in step #2.
+10. You have duplicated the model now.
+
+
+## Renaming a model
+Now we'll look into renaming the model
+
+11. After selecting the model, press the silver MDL button on the top right of the screen.
+12. It'll open a window to edit the model name like below
+  <img width="540" alt="Model Setup" src="https://github.com/user-attachments/assets/d98e750e-d22e-4a6b-b9cc-b7a01290002b" />
+13. Press the cylindrical button and moving it will change the character.
+14. After naming it, just go back with the RTN button.
+
+
+# Pairing your model with the receiver
+
+## Turning on the pairing mode in the receiver
+You'll need to pair the model to the receiver. To put the receiver in pairing mode, do the following:
+
+- Plug the battery in the rover
+- Connect the ESC pins of the servo and the motor to the navio.
+- Unplug the radio receiver if it's plugged into the navio.
+- Press and hold the only button on the receiver module
+- Now, plug it back in (the way it was, yellow wire of the receiver should face up)
+- The receiver will flash; if not, either you didn't press it, or there's no power
+  - Check if the ESC is on; if not, turn it on
+  - If the ESC is not turning on, check the battery connection or ask TA for help
+ 
+## Binding the transmitter
+
+- The Receiver should be in binding mode
+- Go to the model and model setup menu like you did before
+- Go all the way down until (on the model setup menu) you see a bind option
+  - The bind option should be all within the Internal RF section
+- Press the cylinder on it
+- It should ask to select the channels; just select the first one
+- Now it'll say binding; wait for the receiver to flash rapidly
+- When it flashes rapidly, plug it out and back in again
+- Now you're paired with the radio.
+- Press RTN to go back to the main screen
+- You'll see an antenna symbol with a bunch of bars on the top right.
+
+
+
+
+
+
