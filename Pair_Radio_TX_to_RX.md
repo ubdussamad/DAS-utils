@@ -78,6 +78,8 @@ To put the receiver in pairing mode, do the following:
 22. Go to the model and model setup menu like you did before
 23. Go all the way down until (on the model setup menu) you see a bind option
   - The bind option should be all within the Internal RF section
+<img width="747" alt="Bind Button" src="https://github.com/user-attachments/assets/b2e3f5cd-d4de-484d-b20c-3e73517f1161" />
+
 24. Press the cylinder on it
 25. It should ask to select the channels; just select the first one
 26. Now it'll say binding; wait for the receiver to flash rapidly
