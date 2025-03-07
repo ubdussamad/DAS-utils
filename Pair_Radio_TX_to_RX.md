@@ -54,7 +54,7 @@ Now we'll look into renaming the model
 # Pairing your model with the receiver
 
 ## Turning on the pairing mode in the receiver
-You'll need to pair the model to the receiver. The receiver draws power from the motor ESC, so make sure it's plugged in and the battery is plugged in.
+You'll need to pair the model to the receiver. The receiver draws power from the navio, so make sure the pi is powered.
 
 
 >[!CAUTION]
@@ -63,14 +63,18 @@ You'll need to pair the model to the receiver. The receiver draws power from the
 
 To put the receiver in pairing mode, do the following:
 
-15. Plug the battery in the rover
-16. Connect the ESC pins of the servo and the motor to the navio.
-17. Unplug the radio receiver if it's plugged into the navio.
-18. Press and hold the only button on the receiver module
-19. Now, plug it back in (the way it was, the yellow wire of the receiver should face up)
-20. The receiver will flash; if not, either you didn't press it or there's no power
-  - Check if the ESC is on; if not, turn it on by pressing the power button once for a sec
-  - If the ESC is not turning on, check the battery connection or ask TA for help
+15. Unplug the radio receiver if it's plugged into the navio.
+16. Press and hold the only button on the receiver module
+![Button](https://github.com/user-attachments/assets/65dc1b17-32a0-4e33-ae1f-eaf08e688d8c)
+17. Example of the button, you radio may differ but it should have a similar button
+18. Press and **hold** the button on the receiver module
+19. Now, plug it back in **while holding the receiver** (the way it was, the yellow wire of the receiver should face up)
+20. The receiver may flash or stay solid (depending on the receiver model) meaning it's in binding mode
+  - If the reciever has no lights on, it means there's no power, check if the Pi is powered on not
+
+> [!Note]
+> It's critical keep the receiver's button pressed while powering it on (by plugging it into the navio)
+> otherwise the receiver will not go into pairing mode
  
 ## Binding the transmitter
 
@@ -86,7 +90,7 @@ To put the receiver in pairing mode, do the following:
 27 When it flashes rapidly, plug it out and back in again
 28. Now you're paired with the radio.
 29. Press RTN to go back to the main screen
-30. You'll see an antenna symbol with a bunch of bars on the top right.
+30. You'll see an antenna symbol with a bunch of bars on the top right the reciever may also say *Telemetry Recovered*
 <img width="137" alt="Antenna with bars" src="https://github.com/user-attachments/assets/e284d4dd-5125-483d-9a82-cd4ed2b45c5a" />
 
 31. If none of the bars are white (like shown in the picture above), talk to the TA.
