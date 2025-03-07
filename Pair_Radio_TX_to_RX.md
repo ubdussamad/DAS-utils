@@ -65,8 +65,10 @@ To put the receiver in pairing mode, do the following:
 
 15. Unplug the radio receiver if it's plugged into the navio.
 16. Press and hold the only button on the receiver module
+
 ![Button](https://github.com/user-attachments/assets/65dc1b17-32a0-4e33-ae1f-eaf08e688d8c)
-17. Example of the button, you radio may differ but it should have a similar button
+
+17. An example of the button above, your radio may differ but it should have a similar button
 18. Press and **hold** the button on the receiver module
 19. Now, plug it back in **while holding the receiver** (the way it was, the yellow wire of the receiver should face up)
 20. The receiver may flash or stay solid (depending on the receiver model) meaning it's in binding mode
