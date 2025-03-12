@@ -31,11 +31,12 @@ So you're in the trenches and everything is cooked! Be not afraid, this guide wi
     - Type something in the terminal and see if it appears on the screen as you type
     - If it does then your cable is good otherwise it's not
     - Try unplugging and replugging the cable once or twice
-    - If it still donsen't works, ask TAs for a new one
+    - If it still doesn't works, ask TAs for a new one
 
 - **Wrong settings in the SD card**
-    - If've you've recently flashed the OS thein this could also be the problem
-    - Go to the section `#2-connecting-to-pi-via-uart` and double check if all the setting are correct.
+    - If you've recently flashed the OS thein this could also be the problem
+    - Go to the section `#2-connecting-to-pi-via-uart` and double-check if all the settings are correct
+    - Ensure the files `config.txt` and `cmdline.txt` are set to the correct option
  
 - **Wrong pi Connnection**
 
