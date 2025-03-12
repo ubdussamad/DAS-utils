@@ -64,18 +64,18 @@ Before troubleshooting the WiFi, you'll need a working UART connection, though w
    - Make sure your computer is connected to the same network as the Pi
 2. **Where to enter the wifi name and password**
    - There are two files that contain WiFi info:
-       1. `/boot/wpa_supplicant.conf`
-         - This file is accessible from your computer after plugging in the SD card
-         - You can edit it using a text editor
-         - This file can have multiple wifi networks
-         - If you're using this file then make sure the WiFi **you wanna use comes first** in the list
-       2. `/etc/wpa_supplicant/wpa_supplicant.conf`
-         - This file is accessible from the Pi itself
-         - You can edit it using `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`
-         - Typically you should not need to edit this file
-         - Incase you think this file could be the issue, you delete everything in it
-         - This file can have multiple wifi networks
-         - If you're using this file then make sure the WiFi **you wanna use comes first** in the list
+       1. `/boot/wpa_supplicant.conf` <br>
+         - This file is accessible from your computer after plugging in the SD card <br>
+         - You can edit it using a text editor <br>
+         - This file can have multiple wifi networks <br>
+         - If you're using this file then make sure the WiFi **you wanna use comes first** in the list <br>
+       2. `/etc/wpa_supplicant/wpa_supplicant.conf` <br>
+         - This file is accessible when the Pi is on and you're connected to it via UART <br>
+         - You can edit it using `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf` <br>
+         - Typically you should not need to edit this file <br>
+         - Incase you think this file could be the issue, you delete everything in it <br>
+         - This file can have multiple wifi networks <br>
+         - If you're using this file then make sure the WiFi **you wanna use comes first** in the list <br>
 3. **Incorrectly configured wpa_supplicant.conf**
    - Make sure you've entered the correct wifi name and password
    - It should look like this:
