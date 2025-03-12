@@ -1,66 +1,61 @@
-## Troubleshooting PI connection issues
+# Troubleshooting PI Connection Issues
 
-So you're in the trenches and everything is cooked! Be not afraid, this guide will help you.
+So you’re in the trenches and everything is cooked! Don’t worry—this guide will help you.
 
-### Ways of connecting to the Pi
+## Ways of Connecting to the Pi
 
-1. Through UART
-2. SSH via Wifi (You have use the first method once)
+1. **UART**
+2. **SSH via Wi-Fi** (requires at least one initial UART connection, typically)
 
+---
 
-### Troubleshooting UART
+## Troubleshooting UART
 
-#### UART may not work because of
-<img width="275" alt="USB-c to USB-A adapter " src="https://github.com/user-attachments/assets/b1f17f8d-abed-406e-bad8-152e6b48bdc9" />
+### Possible reasons why UART may not work
 
-- **Faulty USB-c to USB-A adapter**
-    - See if the adapter is dysfunctional or janky
-    - Plug in the UART cable with the adapter and do `ls /dev/cu.*` in your terminal
-    - You should see something like `/dev/cu.usbserial-***`
-    - If you don't see that, try using a different adapter.
-    - If you see that, but as soon as you move the able a lit it stops showing, then either your adapter is janky or your port is
-    - Try using a different adapter
+1. **Faulty USB-C to USB-A Adapter**  
+   <img width="275" alt="USB-c to USB-A adapter" src="https://github.com/user-attachments/assets/b1f17f8d-abed-406e-bad8-152e6b48bdc9" />
 
-- **Faulty UART cable**
-<img width="275" align="center" alt="Uart Cable" src="https://github.com/user-attachments/assets/dd951240-686c-4a95-9822-b8a0a3d752a9">
+   - Confirm the adapter itself isn’t defective; try plugging in something that you know works, e.g, a Keyboard or mouse
+   - If you don't have anything to test it with, then plug in the UART cable with the adapter and run `ls /dev/cu.*` in your terminal.  
+     - expect to see something like `/dev/cu.usbserial-***`.  
+     - If nothing appears, try a different adapter
+     - If even the new adapter doesn't work, then move on to step #2; your UART cable must be faulty  
+     - If it appears but disappears when you move the cable slightly, either the adapter or USB port may be loose or faulty.
 
-- If you made sure that your adapter is good and you still dont see `/dev/cu.usbserial-***` when you do `ls /dev/cu.*` then your cable is busted.
-- ask TAs for a new one.
-- If you can see the device, then short (using a male-to-male jumper) the green and white wires together
-- connect to the cable using `screen /dev/cu.usbserial-XYZ 115200`
-- Type something in the terminal and see if it appears on the screen as you type
-- If it does, then your cable is good; otherwise, it's not
-- try unplugging and replugging the cable once or twice
-- If it still doesn't work, ask TAs for a new one
+2. **Faulty UART Cable**  
+   <img width="275" align="center" alt="UART Cable" src="https://github.com/user-attachments/assets/dd951240-686c-4a95-9822-b8a0a3d752a9" />
 
-- **Wrong settings in the SD card**
-    - If you've recently flashed the OS thein this could also be the problem
-    - go to the section `#2-connecting-to-pi-via-uart` and double-check if all the settings are correct
-    - ensure the files `config.txt` and `cmdline.txt` are set to the correct option
+   - If your adapter is not the problem, and you still don’t see `/dev/cu.usbserial-***` when running `ls /dev/cu.*`, your cable may be broken.  
+   - ask TAs for a replacement.  
+   - Once you see the adapter, check if the cable is good by,  
+     1. shorting the green and white wires together (using a male-to-male jumper).  
+     2. connecting via `screen /dev/cu.usbserial-XYZ 115200`.  
+     3. type something in the terminal; if it echoes back, the cable is good.  
+     4. Otherwise, try unplugging and re-plugging the cable. If it still fails, replace it.
 
-- **Wrong pi Connnection**
+3. **Incorrect SD Card Settings**  
+   - If you recently flashed the OS, wrong SD card settings could also be the issue.  
+   - Go to **Step 2: Connecting to Pi via UART** and verify you’ve set all parameters correctly.  
+   - Double-check `config.txt` and `cmdline.txt` to ensure the UART settings are correct.
 
-<img width="275" align="center" alt="Uart pin connection" src="https://github.com/user-attachments/assets/22662f1b-bd8c-4c9c-a57f-f89d4c2c2668">
+4. **Incorrect Pi Connections**  
+   <img width="275" align="center" alt="UART pin connection" src="https://github.com/user-attachments/assets/22662f1b-bd8c-4c9c-a57f-f89d4c2c2668" />
 
-  - Make sure pins are connected the same way as shown above
+   - Confirm the pins are wired exactly as shown above
 
-- **Janky Connections**
-  - Any of the above connections could be janky, so make sure connections are firm
+5. **Loose or “Janky” Connections**  
+   - Ensure every connection is firm and not intermittent.
 
+**If none of these solutions work, ask a TA for assistance.**
 
-If none of these work, ask the TAs for help
+---
 
-## Troubleshooting WIFI
+## Troubleshooting Wi-Fi
 
+Before troubleshooting the WiFi, you'll need a working UART connection, though which you can access the Pi
 
+### Possible reasons why Wifi may not work
 
-
-
-
-
-
-  
-
-
-
+1. **Not connected to wifi properly**
 
