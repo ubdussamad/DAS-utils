@@ -58,4 +58,53 @@ Before troubleshooting the WiFi, you'll need a working UART connection, though w
 ### Possible reasons why Wifi may not work
 
 1. **Not connected to wifi properly**
+   - Make sure you're close to the wifi you're trying to connect to
+   - If you can't do the above; then start your phone's hotspot and connect to it
+   - Make sure the hotspot is NOT 5GHz; Rpi doesn't support 5GHz
+   - Make sure your computer is connected to the same network as the Pi
+2. **Where to enter the wifi name and password**
+   - There are two files that contain WiFi info:
+       1. `/boot/wpa_supplicant.conf`
+         - This file is accessible from your computer after plugging in the SD card
+         - You can edit it using a text editor
+         - This file can have multiple wifi networks
+         - If you're using this file then make sure the WiFi **you wanna use comes first** in the list
+       2. `/etc/wpa_supplicant/wpa_supplicant.conf`
+         - This file is accessible from the Pi itself
+         - You can edit it using `sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`
+         - Typically you should not need to edit this file
+         - Incase you think this file could be the issue, you delete everything in it
+         - This file can have multiple wifi networks
+         - If you're using this file then make sure the WiFi **you wanna use comes first** in the list
+3. **Incorrectly configured wpa_supplicant.conf**
+   - Make sure you've entered the correct wifi name and password
+   - It should look like this:
+     ```bash
+     country=US
+
+     network={
+      ssid="Sam's iPhone or your wifi name"
+      scan_ssid=1
+      psk="your password"
+	 }
+     ```
+4. **Test the WiFi**
+   - If you're not sure if the WiFi is working, then you can test it by:
+     1. Connecting to the Pi via UART
+     2. Running `ping google.com`
+     3. the output should look like this:
+        ```bash
+        PING google.com (
+        64 bytes from google.com: icmp_seq=1 ttl=54 time=23.4 ms
+        64 bytes from google.com: icmp_seq=2 ttl=54 time=23.4 ms
+        ...
+        ```
+     4. If you see the above output, then your WiFi is working
+     5. Get the IP address of the Pi by running `ifconfig` and look for `wlan0` and look for the IP address next to `inet`
+     6. You can also use this command to do the above ` ip addr show wlan0 | grep 'inet ' | awk '{print $2}' | cut -d/ -f1`
+     7. Now you can SSH into the Pi using the IP address you got in the previous step
+
+**If none of these solutions work, ask a TA for assistance or maybe try to repeat Lab-1 step by step.**
+
+
 
