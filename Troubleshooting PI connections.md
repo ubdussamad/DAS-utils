@@ -1,6 +1,6 @@
 # Troubleshooting PI Connection Issues
 
-So you’re in the trenches and everything is cooked! Don’t worry—this guide will help you.
+So you can't connect to Pi? Try this step-by-step guide!
 
 ## Ways of Connecting to the Pi
 
