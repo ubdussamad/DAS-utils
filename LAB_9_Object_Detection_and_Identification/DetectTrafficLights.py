@@ -27,8 +27,10 @@ def detect_color(frame):
 
     # Define color ranges (tune for your environment)
     # Red requires two ranges due to hue wrap
-    red_lower1, red_upper1 = np.array([0, 120, 70]),   np.array([10, 255, 255])
-    red_lower2, red_upper2 = np.array([170, 120, 70]), np.array([180, 255, 255])
+    red_lower1 = (0,   150, 150)
+    red_upper1 = (10,  255, 255)
+    red_lower2 = (170, 150, 150)
+    red_upper2 = (180, 255, 255)
 
     yellow_lower, yellow_upper = np.array([15, 100, 100]), np.array([35, 255, 255])
     green_lower,  green_upper  = np.array([36,  80,  80]),   np.array([85, 255, 255])
@@ -94,4 +96,4 @@ if __name__ == "__main__":
 
         status_buffer = f"{shell_colors[color]}{color}{shell_color_reset}"
         print(status_buffer, end="", flush=True)
-        sleep(0.5)
+        sleep(0.1)
