@@ -1,113 +1,97 @@
-import os
 import cv2
+print("OpenCV version:", cv2.__version__)
 import numpy as np
-import sys
-import RPi.GPIO as GPIO
+from time import sleep
 
-GPIO.setwarnings(False)
+# This script detects the color of a traffic light in a live video feed.
+# You can optimize this for the environment you're in by tuning the color ranges
+# and the minimum area threshold for detection.
 
-enA = 13
-in1 = 27
-in2 = 17
 
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(enA, GPIO.OUT)
-GPIO.setup(in1, GPIO.OUT)
-GPIO.setup(in2, GPIO.OUT)
-pwm_motor = GPIO.PWM(enA, 1000)  
-pwm_motor.start(0)
+shell_colors = {
+    "red": "\033[91m",
+    "green": "\033[92m",
+    "yellow": "\033[93m",
+    "unknown": "\033[94m"
+}
+shell_color_reset = "\033[0m"
 
-# Load the Haar Cascade file
-cascade_path = '/home/pi/TrafficLightDetection/haar_xml_07_19.xml'
+def detect_color(frame):
+    """
+    Returns 'red', 'yellow', 'green', or 'none' depending on which color
+    is detected with the largest contour above a certain area threshold.
+    """
 
-# Check if the file exists
-if not os.path.exists(cascade_path):
-    print(f"Error: The file {cascade_path} does not exist.")
-    sys.exit()
+    # Convert to HSV
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-traffic_light_cascade = cv2.CascadeClassifier(cascade_path)
+    # Define color ranges (tune for your environment)
+    # Red requires two ranges due to hue wrap
+    red_lower1, red_upper1 = np.array([0, 120, 70]),   np.array([10, 255, 255])
+    red_lower2, red_upper2 = np.array([170, 120, 70]), np.array([180, 255, 255])
 
-# Check if the cascade was loaded successfully
-if traffic_light_cascade.empty():
-    print("Error loading haarcascade_trafficlight.xml")
-    sys.exit()
-else:
-    print("Haar cascade loaded successfully.")
+    yellow_lower, yellow_upper = np.array([15, 100, 100]), np.array([35, 255, 255])
+    green_lower,  green_upper  = np.array([36,  80,  80]),   np.array([85, 255, 255])
 
-def detect_traffic_light_color(roi):
-    hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
-    # Define color ranges for red, green, and orange
-    red_lower = np.array([0, 70, 50])
-    red_upper = np.array([10, 255, 255])
-    green_lower = np.array([40, 70, 50])
-    green_upper = np.array([90, 255, 255])
-    orange_lower = np.array([10, 100, 20])
-    orange_upper = np.array([25, 255, 255])
+    # Create masks
+    red_mask1 = cv2.inRange(hsv, red_lower1, red_upper1)
+    red_mask2 = cv2.inRange(hsv, red_lower2, red_upper2)
+    red_mask  = cv2.bitwise_or(red_mask1, red_mask2)
 
-    # Create masks for each color
-    red_mask = cv2.inRange(hsv, red_lower, red_upper)
-    green_mask = cv2.inRange(hsv, green_lower, green_upper)
-    orange_mask = cv2.inRange(hsv, orange_lower, orange_upper)
+    yellow_mask = cv2.inRange(hsv, yellow_lower, yellow_upper)
+    green_mask  = cv2.inRange(hsv, green_lower,  green_upper)
 
-    # Check for the presence of each color
-    if cv2.countNonZero(red_mask) > 0:
-        return 'red'
-    elif cv2.countNonZero(green_mask) > 0:
-        return 'green'
-    elif cv2.countNonZero(orange_mask) > 0:
-        return 'orange'
+    # Small dilation to reduce noise
+    kernel = np.ones((3,3), np.uint8)
+    red_mask    = cv2.dilate(red_mask,    kernel, iterations=1)
+    yellow_mask = cv2.dilate(yellow_mask, kernel, iterations=1)
+    green_mask  = cv2.dilate(green_mask,  kernel, iterations=1)
+
+    # Helper function: find largest contour area
+    def largest_area(mask):
+        _, contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+        if not contours:
+            return 0
+        largest = max(contours, key=cv2.contourArea)
+        return cv2.contourArea(largest)
+
+    red_area    = largest_area(red_mask)
+    yellow_area = largest_area(yellow_mask)
+    green_area  = largest_area(green_mask)
+
+    # Decide which color has the largest area above a threshold
+    MIN_AREA = 100  # tune based on real-world scale
+    color_areas = [('red', red_area), ('yellow', yellow_area), ('green', green_area)]
+    color_areas.sort(key=lambda x: x[1], reverse=True)
+
+    best_color, best_area = color_areas[0]
+    if best_area >= MIN_AREA:
+        return best_color
     else:
         return 'unknown'
 
-def stop_car():
-    print("Stopping the car!")
-    GPIO.output(in1, GPIO.LOW)
-    GPIO.output(in2, GPIO.LOW)
-    pwm_motor.ChangeDutyCycle(0)  # Stop the motor
 
-def move_car():
-    print("Moving the car!")
-    GPIO.output(in1, GPIO.HIGH)
-    GPIO.output(in2, GPIO.LOW)
-    pwm_motor.ChangeDutyCycle(100)  # Full speed
-
-def slow_down_car():
-    print("Slowing down the car!")
-    # Adjust PWM duty cycle to slow down the car
-    pwm_motor.ChangeDutyCycle(50)  # Example duty cycle for slowing down
-
-def main():
+if __name__ == "__main__":
     cap = cv2.VideoCapture(0)
+
+    print("Trrafic light is:", end="" , flush=True)
+    status_buffer = ""
+
     while True:
+        __len_to_clear = len(status_buffer) - len(shell_color_reset) - len(shell_colors['green'])
+        # Cleans out the last status string
+        print( '\b' * __len_to_clear , " " * (__len_to_clear-2) , '\b' * __len_to_clear , end="")
+
+
         ret, frame = cap.read()
-        if not ret:
-            break
+        if not ret:break
 
         # Reduce the frame size
         frame = cv2.resize(frame, (640, 480))
 
-        gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-        traffic_lights = traffic_light_cascade.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+        color = detect_color(frame)
 
-        for (x, y, w, h) in traffic_lights:
-            roi = frame[y:y+h, x:x+w]
-            light_color = detect_traffic_light_color(roi)
-            if light_color == 'red':
-                stop_car()
-            elif light_color == 'green':
-                move_car()
-            elif light_color == 'yellow':
-                slow_down_car()
-            cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
-            cv2.putText(frame, light_color, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 0), 2)
-
-        #cv2.imshow('Traffic Light Detection', frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
-    cap.release()
-    cv2.destroyAllWindows()
-    GPIO.cleanup()
-
-if __name__ == "__main__":
-    main()
+        status_buffer = f"{shell_colors[color]}{color}{shell_color_reset}"
+        print(status_buffer, end="", flush=True)
+        sleep(0.5)
