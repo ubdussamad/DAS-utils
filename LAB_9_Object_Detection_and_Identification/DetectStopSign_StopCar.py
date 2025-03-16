@@ -1,11 +1,17 @@
+'
+
+###############################
+#### Stop Car at Stop Sign ####
+#### --------------------- ####
+#### Objective:        ####
+#### > Drive car forward   ####
+####   until a sotpsign is ####
+####   spotted on the cam  ####
+###############################
 import sys
 import os
 import cv2
 from time import sleep
-
-# Detect Stop Sign Via RPi cam
-# Note: There's a delay between what you see on the terminal, so expect some lag
-# in stop sign detection
 
 shell_color_green = "\033[0;32m"
 shell_color_red =   "\033[0;31m"
@@ -49,11 +55,14 @@ def main():
 		if not ret:
 			print("Error: could not read frame.")
 			break
-		# Resize the ROI for faster processing
+
+    	# Resize the ROI for faster processing
 		frame = cv2.resize(frame,(640, 480))
-		# Convert to grayscale
+
+    	# Convert to grayscale
 		gray_img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-		# Detect stop signs
+
+    	# Detect stop signs
 		stop_signs = stop_sign_cascade.detectMultiScale(gray_img, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
 
 		# If the stop_signs list has something in it, it means that a stop sign was detected
@@ -66,7 +75,10 @@ def main():
 			# the rover will have a control loop, you can pause that
 			# loop with a flag
 
-			sleep(1) # you should wait for few seconds before checking again
+			sleep(1) # you should stop for few seconds before checking again
+			# Also, you should move the car after like a second or 2 after the stop sign is detected
+			# and wait till you're out of stop sign's range
+			
 		else: # No stop sign detected
 			status_buffer = shell_color_green + "Moving!" + shell_color_reset
 			print( status_buffer , flush=True , end="")
@@ -76,5 +88,4 @@ def main():
 	cv2.destroyAllWindows()
 
 
-if __name__ == "__main__":
-	main()
+if __name__ == "__main__":main()
