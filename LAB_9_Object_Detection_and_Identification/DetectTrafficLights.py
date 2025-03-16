@@ -4,8 +4,10 @@ import numpy as np
 from time import sleep
 
 # This script detects the color of a traffic light in a live video feed.
-# You can optimize this for the environment you're in by tuning the color ranges
-# and the minimum area threshold for detection.
+# You can optimize this for your environment you're in by tuning the color ranges
+# (especially for red, as it is the most  tricky to get right, line 30-34) and the minimum 
+# area threshold for detection. It works fine when i use *my* phone's
+# screen to show traffic lights.
 
 
 shell_colors = {
@@ -25,11 +27,10 @@ def detect_color(frame):
     # Convert to HSV
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
-    # Define color ranges (tune for your environment)
-    # Red requires two ranges due to hue wrap
-    red_lower1 = (0,   150, 150)
-    red_upper1 = (10,  255, 255)
-    red_lower2 = (170, 150, 150)
+    # Define color ranges (tune for your environment, if you dont then either red will be heavily prioritized or unprioritized)
+    red_lower1 = (0,   160, 160)
+    red_upper1 = (5,   255, 255)
+    red_lower2 = (175, 160, 160)
     red_upper2 = (180, 255, 255)
 
     yellow_lower, yellow_upper = np.array([15, 100, 100]), np.array([35, 255, 255])
