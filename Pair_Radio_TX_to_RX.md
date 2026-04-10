@@ -54,16 +54,16 @@ Now we'll look into renaming the model
 # Pairing your model with the receiver
 
 ## Turning on the pairing mode in the receiver
-You'll need to pair the model to the receiver. The receiver draws power from the navio, so make sure the pi is powered.
+You'll need to pair the model to the receiver. The receiver draws power from the PiHAT, so make sure the pi is powered.
 
 
 >[!CAUTION]
-> When connecting ESC or Radio receiver pins to the navio, make sure that the black wire always faces down
+> When connecting ESC or Radio receiver pins to the PiHAT, make sure that the black wire always faces down
 > and the yellow or white wire always faces up.
 
 To put the receiver in pairing mode, do the following:
 
-15. Unplug the radio receiver if it's plugged into the navio.
+15. Unplug the radio receiver if it's plugged into the PiHAT.
 16. Press and hold the only button on the receiver module
 
 ![Button](https://github.com/user-attachments/assets/65dc1b17-32a0-4e33-ae1f-eaf08e688d8c)
@@ -75,7 +75,7 @@ To put the receiver in pairing mode, do the following:
   - If the reciever has no lights on, it means there's no power, check if the Pi is powered on not
 
 > [!Note]
-> It's critical keep the receiver's button pressed while powering it on (by plugging it into the navio)
+> It's critical keep the receiver's button pressed while powering it on (by plugging it into the PiHAT)
 > otherwise the receiver will not go into pairing mode
  
 ## Binding the transmitter
