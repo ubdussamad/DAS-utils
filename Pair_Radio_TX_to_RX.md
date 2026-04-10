@@ -31,8 +31,6 @@ rename it to our liking *e.g. sam's-rover*.
 4. Rotate the cylindrical button till a model that goes by `rover[*]` is highlighted.
 5. Press the cylindrical button again, and you'll see an option to duplicate the model.
 <img width="525" alt="Dup model" src="https://github.com/user-attachments/assets/8e10b2ae-090a-436d-b0c7-4d27ac07c053" />
-
-
 6. Duplicate that model by pressing the cylindrical button again.
 7. The clone will show up at the end of the model list.
 8. Go to the clone and select it.
@@ -46,7 +44,6 @@ Now we'll look into renaming the model
 11. After selecting the model, press the silver MDL button on the top right of the screen.
 12. It'll open a window to edit the model name like below
   <img width="540" alt="Model Setup" src="https://github.com/user-attachments/assets/d98e750e-d22e-4a6b-b9cc-b7a01290002b" />
-
 13. Press the cylindrical button and moving it will change the character.
 14. After naming it, just go back with the RTN button.
 
