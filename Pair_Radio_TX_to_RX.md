@@ -31,6 +31,7 @@ rename it to our liking *e.g. sam's-rover*.
 4. Rotate the cylindrical button till a model that goes by `rover[*]` is highlighted.
 5. Press the cylindrical button again, and you'll see an option to duplicate the model.
 <img width="525" alt="Dup model" src="https://github.com/user-attachments/assets/8e10b2ae-090a-436d-b0c7-4d27ac07c053" />
+
 6. Duplicate that model by pressing the cylindrical button again.
 7. The clone will show up at the end of the model list.
 8. Go to the clone and select it.
