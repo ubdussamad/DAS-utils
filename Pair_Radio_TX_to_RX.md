@@ -56,11 +56,6 @@ Now we'll look into renaming the model
 ## Turning on the pairing mode in the receiver
 You'll need to pair the model to the receiver. The receiver draws power from the PiHAT, so make sure the pi is powered.
 
-
->[!CAUTION]
-> When connecting ESC or Radio receiver pins to the PiHAT, make sure that the black wire always faces down
-> and the yellow or white wire always faces up.
-
 To put the receiver in pairing mode, do the following:
 
 15. Unplug the radio receiver if it's plugged into the PiHAT.
