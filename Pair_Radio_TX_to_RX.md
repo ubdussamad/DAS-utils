@@ -45,6 +45,7 @@ Now we'll look into renaming the model
 11. After selecting the model, press the silver MDL button on the top right of the screen.
 12. It'll open a window to edit the model name like below
   <img width="540" alt="Model Setup" src="https://github.com/user-attachments/assets/d98e750e-d22e-4a6b-b9cc-b7a01290002b" />
+  
 13. Press the cylindrical button and moving it will change the character.
 14. After naming it, just go back with the RTN button.
 
