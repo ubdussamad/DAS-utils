@@ -64,7 +64,7 @@ To put the receiver in pairing mode, do the following:
 
 17. An example of the button above, your radio may differ but it should have a similar button
 18. Press and **hold** the button on the receiver module
-19. Now, plug it back in **while holding the receiver** (the way it was, the yellow wire of the receiver should face up)
+19. Now, plug it back in **while holding the receiver**
 20. The receiver may flash or stay solid (depending on the receiver model) meaning it's in binding mode
   - If the reciever has no lights on, it means there's no power, check if the Pi is powered on not
 
